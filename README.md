@@ -22,8 +22,10 @@ This repository contains the software framework and implementation for a ROMI ro
 - Polulu QTR-MD-06A Reflectance Sensor Array: 6-channel, 8mm pitch
 - BNO055 IMU for Orientation Sensing
 
+## Electrical Diagram
+
 ## Software Architecture
-The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently without a full-fledged operating system.
+The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently.
 
 ### Task Structure
 The system is organized into several cooperative tasks:
@@ -40,7 +42,7 @@ The system is organized into several cooperative tasks:
 4. **Encoder Interface (`encoder_class.py`)**: Reads and processes quadrature encoder signals
 5. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
 6. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
-7. **PID Controller (`PID.py`)**: Implements closed-loop control
+7. **PID Controller (`PID.py`)**: Implements closed-loop PID control
 
 ## Getting Started
 
@@ -111,13 +113,11 @@ correction = controller.calculate(error, run_state)
 ```
 
 ## Team Members
-- [Your Name]
-- [Team Member 2]
-- [Team Member 3]
+- Aiden D. Hall
+- Gerardo Tapia-Onate
 
 ## Acknowledgments
-- Dr. [Instructor's Name] for guidance and course materials
-- [Any other acknowledgments]
+- Charlie Revfem, Cal Poly ME 405 professor
 
 ## License
 [Specify License Information]
