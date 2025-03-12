@@ -3,7 +3,7 @@
 ## Project Overview
 This repository contains the software framework and implementation for a ROMI robot platform, developed as part of Cal Poly ME405 (Winter 2025). The project demonstrates the application of embedded systems programming, hardware interfacing, and closed-loop control for autonomous robot navigation.
 
-![ROMI Robot](Romi.jpg){ width=50% }
+![ROMI Robot](Romi.jpg)
 
 ## Features
 - Cooperative multitasking system for concurrent operations
@@ -25,15 +25,28 @@ This repository contains the software framework and implementation for a ROMI ro
 ## Electrical Diagram
 
 ## Software Architecture
-The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently.
+The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently based on a determined priority and period for each task. Each task uses a finite state machine architecture. The tasks use shared variables to store data and communcicate. The shared variables used are the left and right encoder position and motor effort, the line position as read by the IR sensor, the initial heading and current heading as read by the IMU, a flag to indicate if the motors are running, a flag to indicate if a bump has been detected, the mode that Romi is operating at, and the position threshold for Romi to reach based on encoder count.
+INSERT TASK DIAGRAM
+INSERT SHARED VARIABLE TABLE
 
 ### Task Structure
 The system is organized into several cooperative tasks:
 - Motor control task
-- Encoder reading task
-- Sensor reading task
-- User interface task
-- Navigation task
+- Line task
+- Position task
+- Bump Task
+- IMU task
+#### Motor Control Task
+INSERT FINITE STATE MACHINE
+The motor control task
+#### Line Following Task
+INSERT FINITE STATE MACHINE
+#### Position Task
+INSERT FINITE STATE MACHINE
+#### Bump Task
+INSERT FINITE STATE MACHINE
+#### IMU Task
+INSERT FINITE STATE MACHINE
 
 ### Key Software Components
 1. **Cooperative Multitasking (`cotask.py`)**: Manages task scheduling and execution
@@ -43,20 +56,6 @@ The system is organized into several cooperative tasks:
 5. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
 6. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
 7. **PID Controller (`PID.py`)**: Implements closed-loop PID control
-
-## Getting Started
-
-### Prerequisites
-- MicroPython-compatible board (e.g., Nucleo with STM32)
-- ROMI robot platform with motors and encoders
-- IR sensor array
-- BNO055 IMU
-
-### Installation
-1. Clone this repository
-2. Connect your Nucleo board to your computer
-3. Transfer the Python files to the Nucleo board
-4. Run `main.py` to start the system
 
 ## Project Demonstrations
 
@@ -111,6 +110,8 @@ The `PIDController` class implements a proportional-integral-derivative controll
 controller = PIDController(Kp, Ki, Kd)
 correction = controller.calculate(error)
 ```
+
+## Future Improvements
 
 ## Team Members
 - Aiden D. Hall
