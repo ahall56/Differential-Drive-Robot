@@ -3,7 +3,7 @@
 ## Project Overview
 This repository contains the software framework and implementation for a ROMI robot platform, developed as part of Cal Poly ME405 (Winter 2025). The project demonstrates the application of embedded systems programming, hardware interfacing, and closed-loop control for autonomous robot navigation.
 
-![ROMI Robot, width="190"](Romi.jpg)
+![ROMI Robot](Romi.jpg){ width=50% }
 
 ## Features
 - Cooperative multitasking system for concurrent operations
