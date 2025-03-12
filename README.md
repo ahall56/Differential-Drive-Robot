@@ -40,7 +40,7 @@ The system is organized into several cooperative tasks:
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
 INSERT FINITE STATE MACHINE
 #### Line Following Task
-The line following task reads linearized data from the infrared sensor based on the white and black calibration values
+The line following task reads linearized data from the infrared sensor based on the white and black calibration values, returns the centroid of the readings, calculates the error from the desired centroid (3.5 because we have a 6 sensor array), and passes the error to the PID controller to calculate the steering correction.
 INSERT FINITE STATE MACHINE
 #### Position Task
 INSERT FINITE STATE MACHINE
@@ -96,7 +96,7 @@ centroid = sensors.get_centroid(readings)
 ### PID Control
 The `PIDController` class implements a proportional-integral-derivative controller:
 ```python
-controller = PIDController(Kp, Ki, Kd)
+controller = PIDController(Kp, Ki, Kd, dt)
 correction = controller.calculate(error)
 ```
 
