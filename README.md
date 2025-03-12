@@ -37,9 +37,10 @@ The system is organized into several cooperative tasks:
 - Bump Task
 - IMU task
 #### Motor Control Task
+The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
 INSERT FINITE STATE MACHINE
-The motor control task
 #### Line Following Task
+The line following task reads linearized data from the infrared sensor based on the white and black calibration values
 INSERT FINITE STATE MACHINE
 #### Position Task
 INSERT FINITE STATE MACHINE
@@ -50,29 +51,17 @@ INSERT FINITE STATE MACHINE
 
 ### Key Software Components
 1. **Cooperative Multitasking (`cotask.py`)**: Manages task scheduling and execution
-2. **Inter-Task Communication (`task_share.py`)**: Provides thread-safe data sharing between tasks
-3. **Motor Driver (`motor_class.py`)**: Controls motor speed and direction
-4. **Encoder Interface (`encoder_class.py`)**: Reads and processes quadrature encoder signals
-5. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
-6. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
-7. **PID Controller (`PID.py`)**: Implements closed-loop PID control
+3. **Inter-Task Communication (`task_share.py`)**: Provides thread-safe data sharing between tasks
+4. **Motor Driver (`motor_class.py`)**: Controls motor speed and direction
+5. **Encoder Interface (`encoder_class.py`)**: Reads and processes quadrature encoder signals
+6. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
+7. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
+8. **PID Controller (`PID.py`)**: Implements closed-loop PID control
 
 ## Project Demonstrations
-
-### Line Following
-The robot can follow a black line on a light background using the IR sensor array and PID control:
-
-[Video Link Here]
-
-### North-Seeking Behavior
-Using the BNO055 IMU, the robot can determine its orientation and turn to face north:
-
-[Video Link Here]
-
-### Circle Driving
-The robot can drive in a precise 2ft diameter circle using closed-loop control:
-
-[Video Link Here]
+[insert course pdf]
+Romi has been specifically programmed to traverse through the course above, which has line following segments, a grid navigation portion, and a wall to maneuver around.
+[insert course completion video]
 
 ## Code Documentation
 
