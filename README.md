@@ -3,7 +3,7 @@
 ## Project Overview
 This repository contains the software framework and implementation for a ROMI robot platform, developed as part of Cal Poly ME405 (Winter 2025). The project demonstrates the application of embedded systems programming, hardware interfacing, and closed-loop control for autonomous robot navigation.
 
-![ROMI Robot](https://place-image-of-your-robot-here.jpg)
+![ROMI Robot](Romi.jpg)
 
 ## Features
 - Cooperative multitasking system for concurrent operations
@@ -109,7 +109,7 @@ centroid = sensors.get_centroid(readings)
 The `PIDController` class implements a proportional-integral-derivative controller:
 ```python
 controller = PIDController(Kp, Ki, Kd)
-correction = controller.calculate(error, run_state)
+correction = controller.calculate(error)
 ```
 
 ## Team Members
@@ -117,7 +117,5 @@ correction = controller.calculate(error, run_state)
 - Gerardo Tapia-Onate
 
 ## Acknowledgments
-- Charlie Revfem, Cal Poly ME 405 professor
-
-## License
-[Specify License Information]
+- Charlie Revfem, Cal Poly Mechanical Engieering Professor
+- J.R. Ridgely, Cal Poly Mechanical Engineering Professor
