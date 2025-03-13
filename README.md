@@ -61,7 +61,7 @@ INSERT FINITE STATE MACHINE
 ## Project Demonstrations
 [insert course pdf]
 Romi has been specifically programmed to traverse through the course above, which has line following segments, a grid navigation portion, and a wall to maneuver around.
-[insert course completion video]
+[Click Here for Demonstration Video](https://youtu.be/j0VFErPfen4)
 
 ## Code Documentation
 
