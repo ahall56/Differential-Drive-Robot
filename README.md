@@ -15,19 +15,18 @@ This repository contains the software framework and implementation for a ROMI ro
 - Task sharing mechanism for inter-task communication
 
 ## Hardware Components
-- ROMI Robot Chassis
+- Romi Chassis kit, Polulu Robotics
+- Romi Ball Caster Kit, Polulu Robotics
+- Romi Power Distribution Board, Polulu Robotics
+- Romi Encoder Pair Kit, Polulu Robotics
 - Nucleo-L476RG microcontroller
-- DRV8838 Motor Drivers
-- Quadrature Encoders
-- Polulu QTR-MD-06A Reflectance Sensor Array: 6-channel, 8mm pitch
-- BNO055 IMU for Orientation Sensing
+- QTR-MD-06A Reflectance Sensor Array: 6-channel, 8mm pitch, Polulu Robotics
+- BNO055 IMU
 
 ## Electrical Diagram
 
 ## Software Architecture
 The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently based on a determined priority and period for each task. Each task uses a finite state machine architecture. The tasks use shared variables to store data and communcicate. The shared variables used are the left and right encoder position and motor effort, the line position as read by the IR sensor, the initial heading and current heading as read by the IMU, a flag to indicate if the motors are running, a flag to indicate if a bump has been detected, the mode that Romi is operating at, and the position threshold for Romi to reach based on encoder count.
-
-INSERT TASK DIAGRAM
 
 INSERT SHARED VARIABLE TABLE
 
@@ -38,6 +37,9 @@ The system is organized into several cooperative tasks:
 - Position task
 - Bump Task
 - IMU task
+
+INSERT TASK DIAGRAM
+
 #### Motor Control Task
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
 
