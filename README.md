@@ -26,7 +26,9 @@ This repository contains the software framework and implementation for a ROMI ro
 
 ## Software Architecture
 The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently based on a determined priority and period for each task. Each task uses a finite state machine architecture. The tasks use shared variables to store data and communcicate. The shared variables used are the left and right encoder position and motor effort, the line position as read by the IR sensor, the initial heading and current heading as read by the IMU, a flag to indicate if the motors are running, a flag to indicate if a bump has been detected, the mode that Romi is operating at, and the position threshold for Romi to reach based on encoder count.
+
 INSERT TASK DIAGRAM
+
 INSERT SHARED VARIABLE TABLE
 
 ### Task Structure
@@ -38,15 +40,20 @@ The system is organized into several cooperative tasks:
 - IMU task
 #### Motor Control Task
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
+
 INSERT FINITE STATE MACHINE
 #### Line Following Task
 The line following task reads linearized data from the infrared sensor based on the white and black calibration values, returns the centroid of the readings, calculates the error from the desired centroid (3.5 because we have a 6 sensor array), and passes the error to the PID controller to calculate the steering correction.
+
 INSERT FINITE STATE MACHINE
 #### Position Task
+The position task is used to control portions of the track where the robot is not line following. These two portions of the track are to pass through the diamond and the grid navigation. We chose to switch to encoder and heading control to get through the diamond portion becuase our infrared sensor was too small to respond to the sharp diamond turns without making our line following controller unstable. To traverse through the grid section, we take an intial heading at our start point to use as a reference heading, and when entering the grid, we adjust Romi's heading to 180 degrees from the initial heading. Then we use PID control and encoder distance control to drive through the grid, make a 90 degree turn, and return to line following at checkpoint 5. The states of the position task consist of changing to a desired heading based off of our reference heading and drving forward a set amount of encoder ticks.
 INSERT FINITE STATE MACHINE
 #### Bump Task
+The bump task, similar to the position task, uses encoder and heading control to maneuver around the wall and to the finish line after bumping into the wall. The states of the line task consist of checking for an input from the bump sensors, and then a series of operations that consist of changing to a desired heading based off of our reference heading and drving forward a set amount of encoder ticks.
 INSERT FINITE STATE MACHINE
 #### IMU Task
+The IMU task is minimal and is responsible for updating the heading share at every run of the task. Upon the first run of the task, the heading is stored in the initial_heading share.
 INSERT FINITE STATE MACHINE
 
 ### Key Software Components
@@ -101,6 +108,16 @@ The `PIDController` class implements a proportional-integral-derivative controll
 controller = PIDController(Kp, Ki, Kd, dt)
 correction = controller.calculate(error)
 ```
+
+### Bump Sensor
+The `BumpSensor` class reads values from our bump sensors and determines whether the bump occus on the left or right hand side of Romi's front.
+```python
+bump_L_pins = [left_pin_list]
+bump_R_pins = [right_pin_list]
+bump_sensors = BumpSensorArray(bump_L_pins, bump_R_pins)
+bump_result = bump_sensors.check_bump()
+bump_sensor.is_left_collision()
+bump_sensor.is_right_collision()
 
 ## Future Improvements
 
