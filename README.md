@@ -67,7 +67,7 @@ INSERT FINITE STATE MACHINE
 6. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
 7. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
 8. **PID Controller (`PID.py`)**: Implements closed-loop PID control
-9. **Bump Sensor (`bump_sensor.py`): Reads bump sensor signals
+9. **Bump Sensor (`bump_sensor.py`)**: Reads signals from bump sensors
 
 ## Project Demonstrations
 ![Game Track](Game_Track.pdf)
@@ -122,6 +122,7 @@ bump_sensors = BumpSensorArray(bump_L_pins, bump_R_pins)
 bump_result = bump_sensors.check_bump()
 bump_sensor.is_left_collision()
 bump_sensor.is_right_collision()
+```
 
 ## Future Improvements
 
