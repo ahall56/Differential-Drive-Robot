@@ -123,6 +123,9 @@ bump_sensor.is_right_collision()
 ```
 
 ## Future Improvements
+- Implement PID control for heading changes to achieve higher accuracy and higher speed
+- Implement cascaded control system, which includes adding PID control for motor speed and position
+- Incorporate larger infrared sensor with more channels to get a larger field of view and achieve faster line following speed
 
 ## Team Members
 - Aiden D. Hall
