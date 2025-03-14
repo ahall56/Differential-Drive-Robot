@@ -59,7 +59,7 @@ The IMU task is minimal and is responsible for updating the heading share at eve
 
 INSERT FINITE STATE MACHINE
 
-### Key Software Components
+### Control Classes and Hardware Drivers
 1. **Cooperative Multitasking (`cotask.py`)**: Manages task scheduling and execution
 3. **Inter-Task Communication (`task_share.py`)**: Provides thread-safe data sharing between tasks
 4. **Motor Driver (`motor_class.py`)**: Controls motor speed and direction
