@@ -116,9 +116,7 @@ correction = controller.calculate(error)
 ### Bump Sensor
 The `BumpSensor` class reads values from our bump sensors and determines whether the bump occus on the left or right hand side of Romi's front.
 ```python
-bump_L_pins = [left_pin_list]
-bump_R_pins = [right_pin_list]
-bump_sensors = BumpSensorArray(bump_L_pins, bump_R_pins)
+bump_sensors = BumpSensorArray(left_pins, right_pins)
 bump_result = bump_sensors.check_bump()
 bump_sensor.is_left_collision()
 bump_sensor.is_right_collision()
