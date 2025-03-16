@@ -143,6 +143,8 @@ bump_sensor.is_right_collision()
 - Develop Function for turn state sections to intake a target heading to simplify and reduce code
 - Develop Function for drive state sections to intake a speed to simplify and reduce code
 
+## Romi_Kinematics
+This additional document includes a assignment that defines and models Romi's Kinematics. This model includes simulations of Romi in both closed and open loop.
 ## Team Members
 - Aiden D. Hall
 - Gerardo Tapia-Onate
