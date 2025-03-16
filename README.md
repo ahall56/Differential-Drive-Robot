@@ -144,7 +144,8 @@ bump_sensor.is_right_collision()
 - Develop Function for drive state sections to intake a speed to simplify and reduce code
 
 ## Romi_Kinematics
-This additional document includes a assignment that defines and models Romi's Kinematics. This model includes simulations of Romi in both closed and open loop.
+This additional document includes a assignment that defines and models Romi's Kinematics. This model includes simulations of Romi in both closed and open loop. The model uses the Runge-Kutta Method to solve for the system. Included in the document are the system parameters, state space matrices, and plots of various system behavior.
+
 ## Team Members
 - Aiden D. Hall
 - Gerardo Tapia-Onate
