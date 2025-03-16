@@ -49,7 +49,7 @@ The system is organized into several cooperative tasks:
 - Bump Task
 - IMU task
 
-INSERT TASK DIAGRAM
+![Task Diagram](Task_Diagram.jpg)
 
 #### Motor Control Task
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
