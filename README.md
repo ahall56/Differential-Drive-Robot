@@ -29,7 +29,30 @@ This repository contains the software framework and implementation for a ROMI ro
 ## Software Architecture
 The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently based on a determined priority and period for each task. Each task uses a finite state machine architecture. The tasks use shared variables to store data and communcicate. The shared variables used are the left and right encoder position and motor effort, the line position as read by the IR sensor, the initial heading and current heading as read by the IMU, a flag to indicate if the motors are running, a flag to indicate if a bump has been detected, the mode that Romi is operating at, and the position threshold for Romi to reach based on encoder count.
 
-INSERT SHARED VARIABLE TABLE
+\begin{array}{|l|l|l|}
+\hline
+\textbf{Variable Name} & \textbf{Data Type} & \textbf{Purpose} \\
+\hline
+\texttt{effort\_L} & \text{Float} & \text{Holds the value of the desired left motor effort} \\
+\hline
+\texttt{effort\_R} & \text{Float} & \text{Holds the value of the desired right motor effort} \\
+\hline
+\texttt{line\_position} & \text{Float} & \text{Holds the value of the line position based on the IR sensor array in the form of its centroid} \\
+\hline
+\texttt{heading} & \text{Float} & \text{Hold values of current and target directional headings} \\
+\hline
+\texttt{initial\_heading} & \text{Float} & \text{Used to store and hold the directional heading obtained upon initialization of Romi} \\
+\hline
+\texttt{bump\_state} & \text{Byte} & \text{Flag to communicate between tasks that the bump sensors have been triggered} \\
+\hline
+\texttt{mode} & \text{Byte} & \text{Flag that changes based on which mode it currently is in, allowing certain sections of each task to run} \\
+\hline
+\texttt{run\_state} & \text{Byte} & \text{Flag to communicate between tasks that states whether the motors are running or not} \\
+\hline
+\texttt{position\_threshold} & \text{Integer} & \text{A flag to let tasks know that a certain position has been reached} \\
+\hline
+\end{array}
+
 
 ### Task Structure
 The system is organized into several cooperative tasks:
