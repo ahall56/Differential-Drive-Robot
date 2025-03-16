@@ -68,7 +68,7 @@ The IMU task is minimal and is responsible for updating the heading share at eve
 4. **Motor Driver (`motor_class.py`)**: Controls motor speed and direction
 5. **Encoder Interface (`encoder_class.py`)**: Reads and processes quadrature encoder signals
 6. **IR Sensor Interface (`IR_Sensor.py`)**: Processes line sensor readings
-7. **IMU Interface (`lab_0x05.py`)**: Communicates with the BNO055 IMU
+7. **IMU Interface (`IMU.py`)**: Communicates with the BNO055 IMU
 8. **PID Controller (`PID.py`)**: Implements closed-loop PID control
 9. **Bump Sensor (`bump_sensor.py`)**: Reads signals from bump sensors
 
