@@ -24,6 +24,7 @@ This repository contains the software framework and implementation for a ROMI ro
 - BNO055 IMU
 
 ## Electrical Diagram
+![ROMI Wire](Romi Wire Diagram.jpg)
 
 ## Software Architecture
 The software architecture is built on a cooperative multitasking system that allows multiple tasks to run concurrently based on a determined priority and period for each task. Each task uses a finite state machine architecture. The tasks use shared variables to store data and communcicate. The shared variables used are the left and right encoder position and motor effort, the line position as read by the IR sensor, the initial heading and current heading as read by the IMU, a flag to indicate if the motors are running, a flag to indicate if a bump has been detected, the mode that Romi is operating at, and the position threshold for Romi to reach based on encoder count.
