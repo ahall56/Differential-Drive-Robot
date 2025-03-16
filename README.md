@@ -44,23 +44,23 @@ INSERT TASK DIAGRAM
 #### Motor Control Task
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
 
-INSERT FINITE STATE MACHINE
+![Motor Task](Motor_Task.jpg)
 #### Line Following Task
 The line following task reads linearized data from the infrared sensor based on the white and black calibration values, returns the centroid of the readings, calculates the error from the desired centroid (3.5 because we have a 6 sensor array), and passes the error to the PID controller to calculate the steering correction.
 
-INSERT FINITE STATE MACHINE
+![Line Task](Line_Task.jpg)
 #### Position Task
 The position task is used to control portions of the track where the robot is not line following. These two portions of the track are to pass through the diamond and the grid navigation. We chose to switch to encoder and heading control to get through the diamond portion becuase our infrared sensor was too small to respond to the sharp diamond turns without making our line following controller unstable. To traverse through the grid section, we take an intial heading at our start point to use as a reference heading, and when entering the grid, we adjust Romi's heading to 180 degrees from the initial heading. Then we use PID control and encoder distance control to drive through the grid, make a 90 degree turn, and return to line following at checkpoint 5. The states of the position task consist of changing to a desired heading based off of our reference heading and drving forward a set amount of encoder ticks.
 
-INSERT FINITE STATE MACHINE
+![Position Task](Position_Task.jpg)
 #### Bump Task
 The bump task, similar to the position task, uses encoder and heading control to maneuver around the wall and to the finish line after bumping into the wall. The states of the line task consist of checking for an input from the bump sensors, and then a series of operations that consist of changing to a desired heading based off of our reference heading and drving forward a set amount of encoder ticks.
 
-INSERT FINITE STATE MACHINE
+![Bump Task](Bump_Task.jpg)
 #### IMU Task
 The IMU task is minimal and is responsible for updating the heading share at every run of the task. Upon the first run of the task, the heading is stored in the initial_heading share.
 
-INSERT FINITE STATE MACHINE
+![IMU Task](IMU_Task.jpg)
 
 ### Control Classes and Hardware Drivers
 1. **Cooperative Multitasking (`cotask.py`)**: Manages task scheduling and execution
