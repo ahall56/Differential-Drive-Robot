@@ -54,7 +54,7 @@ The system is organized into several cooperative tasks:
 #### Motor Control Task
 The motor control task is responsible for setting the desired effort for the motors. It takes in three shares: the left and right motor effort, and the run state flag to indicate whether to set the efforts or stop the motors.
 
-![Motor Task](Motor_Task.jpg)
+![Motor Task](Finite_State_Machines,Motor_Task.jpg)
 #### Line Following Task
 The line following task reads linearized data from the infrared sensor based on the white and black calibration values, returns the centroid of the readings, calculates the error from the desired centroid (3.5 because we have a 6 sensor array), and passes the error to the PID controller to calculate the steering correction.
 
